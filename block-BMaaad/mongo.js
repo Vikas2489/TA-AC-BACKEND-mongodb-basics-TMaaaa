@@ -19,8 +19,10 @@ db.createCollection("weather");
 // with maximum of 3 documents
 //  and try inserting more than 3 to see the result.
 
-db.createCollection("temperature", { capped: true, size: 10000 })
+db.createCollection("temperature", { capped: true, size: 10000, max: 3 })
 db.temperature.insert({ title: "Delhi", name: "vikas", howIsTheDay: "sunny" })
+
+// if in this temperature we will insert more than 3 documents then it will be going to pop out the first element from documents.
 
 // - create a simple collection named `humidity`
 
