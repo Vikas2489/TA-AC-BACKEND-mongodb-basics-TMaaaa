@@ -79,7 +79,7 @@ db.articles.update({ title: "title1" }, { $push: { tags: "New tag" } })
 
 // 13. find an article using title and increment it's auhtor's age by 5.
 
-db.articles.update({ title: "title1" }, { $set: { "author.age": 26 } });
+db.articles.update({ title: "title1" }, { $inc: { "author.age": 5 } });
 
 // 14. Delete a document using \_id field with `db.COLLECTION_NAME.remove()`.
 
@@ -87,7 +87,7 @@ db.articles.remove({ _id: ObjectId("62b4bc309c988cf0518a8dc5") });
 
 // - Find all males who play cricket.
 
-db.users.find({ sports: "cricket" });
+db.users.find({ sports: "cricket", gender: "male" });
 
 // - Update user with extra golf field in sports array whose name is "Steve Ortega".
 
@@ -99,4 +99,4 @@ db.users.find({ sports: { $in: ["football", "cricket"] } });
 
 // - Find all users whose name includes 'ri' in their name.
 
-db.users.find({ name: { $regex: "ri" } })
+db.users.find({ name: /ri/i })
