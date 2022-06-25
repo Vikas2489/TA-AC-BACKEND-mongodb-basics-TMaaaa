@@ -8,6 +8,8 @@ DB_NAME --collection COLLECTION_NAME --file cities.json(file location) --jsonArr
 (an array of json data)
 ```
 
+mongoimport --db=tests --collection=users --file=/Users/vikas/Desktop/generated_json.js
+
 host, username and password are optional fields.
 
 - --host : hostname // defaults to localhost:27017
@@ -26,16 +28,16 @@ Go to `https://www.json-generator.com/`
 ```js
 // paste this on left panel
 [
-  "{{repeat(30)}}",
+  '{{repeat(30)}}',
   {
-    _id: "{{objectId()}}",
-    age: "{{integer(20, 40)}}",
-    name: "{{firstName()}} {{surname()}}",
-    gender: "{{gender()}}",
-    company: "{{company().toUpperCase()}}",
-    email: "{{email()}}",
-    phone: "+1 {{phone()}}",
-    tags: ["{{repeat(2)}}", '{{lorem(1, "words")}}'],
+    _id: '{{objectId()}}',
+    age: '{{integer(20, 40)}}',
+    name: '{{firstName()}} {{surname()}}',
+    gender: '{{gender()}}',
+    company: '{{company().toUpperCase()}}',
+    email: '{{email()}}',
+    phone: '+1 {{phone()}}',
+    tags: ['{{repeat(2)}}', '{{lorem(1, "words")}}'],
   },
 ];
 ```
@@ -43,17 +45,22 @@ Go to `https://www.json-generator.com/`
 - download it on `Desktop`
 - import it into mongodb `test` database into a collection named `users`
 
+<!-- mongoimport --host localhost:27017  --db test --collection users --file /Users/vikas/Desktop/generated_json.json --jsonArray -->
+
 #### Export data from mongodb server to local system in json format using
 
 `mongoexport`command.
 
 ```
 mongoexport --db state --collection cities --out ~/Desktop/states/city.json --jsonArray
+
 ```
 
 ## BLOCK-writeCode
 
 Export `users` collection from `test` database onto `Desktop` in a file named `exported.json`.
+
+<!-- mongoexport --db test --collection users --out ~/Desktop/exported.json --jsonArray -->
 
 #### Import from csv file
 
@@ -66,3 +73,5 @@ mongoimport -d DB_NAME -c COLLECTION_NAME --type csv --file elections.csv(file l
 Generate mock csv data from `https://www.convertcsv.com/generate-test-data.htm`
 
 - insert this mock csv data into `test` database into a collection named `students`
+
+<!-- mongoimport -d test -c students --type csv --file /Users/vikas/Desktop/convertcsv.csv --headerline -->
